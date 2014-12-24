@@ -28,8 +28,7 @@
                         "pool-" subdomain)
             strUpCmd (str "/usr/bin/docker -H tcp://" strHostIp ":4243 run "
                         "-d -v /var/run/docker.sock:/var/run/docker.sock "
-                        "-e VIRTUAL_HOST=nginx-proxy.cloudapp.net "
-                        "-e MAX_CONTAINERS=5 "
+                        "-e MAX_CONTAINERS=3 "
                         "-e POOL_BASE_DOMAIN=" subdomain ".gennai.org "
                         "-e GITHUB_BOT=false "
                         "-e VIRTUAL_HOST=*." subdomain ".gennai.org "
