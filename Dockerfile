@@ -7,7 +7,9 @@ RUN yum -y install git java-1.7.0-openjdk
 RUN git clone https://github.com/tf0054/simplestweb.git
 ADD https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein /opt/lein
 RUN chmod a+x /opt/lein
-WORKDIR /simplestweb
+ADD https://get.docker.com/builds/Linux/x86_64/docker-latest -o docker /usr/bin/docker
+RUN chmod a+x /usr/bin/docker
+WORKDIR /simplestcgi
 
 EXPOSE 80
 
