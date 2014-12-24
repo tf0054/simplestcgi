@@ -4,18 +4,15 @@
            [clojure.string :as string]))
 
 (defn app [req]
-  (let [strHostIp (System/getenv "HOST_IP")
-        strHostId (System/getenv "HOST_ID")]
-    (if (or (empty? strHostIp) (empty? strHostId))
+  (let [strHostIp (System/getenv "HOST_IP")]
+    (if (empty? strHostIp)
       {:status  200
        :headers {"Content-Type" "text/html"}
        :body    (str "<DIV STYLE=\"font-family: Consolas, Menlo, 'Liberation Mono', Courier, monospace;\">"
                      "Please set env params!<br/>"
                      strHostIp "<br/>"
-                     strHostId "<br/>"
                      "</DIV>")}
-      (let [objContainer (docker (str "http://" strHostIp ":4243") {:command :container-processes :id strHostId})]
-        (println strHostIp "<br/>" strHostId "<br/>")
+      (let [objContainer (docker (str "http://" strHostIp ":4243") {:command :containers})]
         {:status  200
          :headers {"Content-Type" "text/html"}
          :body    (str "<DIV STYLE=\"font-family: Consolas, Menlo, 'Liberation Mono', Courier, monospace;\">"
