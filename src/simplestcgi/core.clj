@@ -14,7 +14,7 @@
       {:status  200
        :headers {"Content-Type" "text/html"}
        :body    (str "<DIV STYLE=\"font-family: Consolas, Menlo, 'Liberation Mono', Courier, monospace;\">"
-                     (sh (str "docker -H tcp://" strHostIp ":4243 " "ps"))
+                     (sh (str "/usr/bin/docker -H tcp://" strHostIp ":4243 " "ps"))
                      "</DIV>")}
         )))
 
