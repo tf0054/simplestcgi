@@ -47,11 +47,14 @@
                          strUpCmd
                          "</pre>"
                          "Response:" "<br/>"
-                         "<div style=\"border-style: solid ; border-width: 1px;\">"
+                         "<pre style=\"border-style: solid ; border-width: 1px;\">"
                          (sh "sh" "-c" strKlCmd) "<br/>"
                          (sh "sh" "-c" strRmCmd) "<br/>"
                          (sh "sh" "-c" strUpCmd)
-                         "</div>"
+                         "</pre>"
+                         "Link:" "<br/>"
+                         "<a href=\"http://master." subdomain ".gennai.org/\" target=\"_blank\">"
+                         "http://master." subdomain ".gennai.org/" "</a>" "<br/>"
                          "<br/>"
                          "Debug:" "<br/>"
                          subdomain "<br/>"
