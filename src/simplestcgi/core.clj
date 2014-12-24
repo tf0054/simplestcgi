@@ -22,7 +22,11 @@
                      "Please set env params!<br/>"
                      strHostIp "<br/>"
                      "</DIV>")}
-      (let [strCmd (str "/usr/bin/docker -H tcp://" strHostIp ":4243 run "
+      (let [strKlCmd (str "/usr/bin/docker -H tcp://" strHostIp ":4243 kill "
+                        "pool-" subdomain)
+            strRmCmd (str "/usr/bin/docker -H tcp://" strHostIp ":4243 rm "
+                        "pool-" subdomain)
+            strUpCmd (str "/usr/bin/docker -H tcp://" strHostIp ":4243 run "
                         "-d -v /var/run/docker.sock:/var/run/docker.sock "
                         "-e VIRTUAL_HOST=nginx-proxy.cloudapp.net "
                         "-e MAX_CONTAINERS=5 "
@@ -38,11 +42,15 @@
                          ;(sh "sh" "-c" (str "/usr/bin/docker -H tcp://" strHostIp ":4243 ps"))
                          "Command:"
                          "<pre style=\"border-style: solid ; border-width: 1px;\">"
-                         strCmd
+                         strKlCmd ";<br/>"
+                         strRmCmd ";<br/>"
+                         strUpCmd
                          "</pre>"
                          "Response:" "<br/>"
                          "<div style=\"border-style: solid ; border-width: 1px;\">"
-                         (sh "sh" "-c" strCmd)
+                         (sh "sh" "-c" strKlCmd) "<br/>"
+                         (sh "sh" "-c" strRmCmd) "<br/>"
+                         (sh "sh" "-c" strUpCmd)
                          "</div>"
                          "<br/>"
                          "Debug:" "<br/>"
