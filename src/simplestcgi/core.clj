@@ -54,16 +54,13 @@
                          "Link:" "<br/>"
                          "<a href=\"http://master." subdomain ".gennai.org/\" target=\"_blank\">"
                          "http://master." subdomain ".gennai.org/" "</a>" "<br/>"
-                         "<br/>"
-                         "Debug:" "<br/>"
-                         subdomain "<br/>"
-                         githubrepo "<br/>"
                          "</DIV>")})
         )))
 
 (defroutes routes
   (POST "/" [subdomain githubrepo] (kick-docker subdomain githubrepo))
   (GET  "/" [] (view-form)))
+  (GET  "/ps" [] (view-form)))
 
 (def app (wrap-params routes))
 
